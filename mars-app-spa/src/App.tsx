@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Select from 'react-select';
 import './App.css';
+import { DropDownFC } from './FCs/dropDownFC';
 import getFromApi from './getFromApi';
 import { RoverI } from './nasaInterfaces';
 
@@ -8,20 +10,19 @@ const func = async () => {
 }
 
 function App() {
-  const [text, setText] = useState("defaultText");
+  const [rovers, setRovers] = useState<RoverI[]>([]);
 
   useEffect(() => { (async () => {
       console.log("oiahwe");
-        setText((await getFromApi<RoverI[]>('http://localhost:8000/rovers/'))
-          .map(rover => rover.name).join());
-      
+        setRovers((await getFromApi<RoverI[]>('http://localhost:8000/rovers/')));
     })()}, []
   );
-  
+  const dropDownOptions = rovers.map((rover)=>{return {value:rover.name,label:rover.name}});
   return (
       <div className="App">
         <header className="App-header">
-        <p>{text}</p>
+        <p>Rover Drop Down:</p>
+        <DropDownFC options={dropDownOptions}/>
         </header>
       </div>
   );
