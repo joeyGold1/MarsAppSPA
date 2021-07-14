@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 
 type buttonCounterProps = {
     buttonText:string;
-    count: number;
-    setCount: (a: number) => number;
+    countVar: number;
+    setCountFn: (a:number) => void;
 }
 
 export const ButtonCounterFC: React.FC <buttonCounterProps> = (
-    (({buttonText,count,setCount})=>{
+    (({buttonText,countVar,setCountFn})=>{
         
         return  (
             <>
-                <button onClick={() => setCount(count + 1)}>
+                <button onClick={() => setCountFn(countVar + 1)}>
                     {buttonText}
                 </button>
             </>
