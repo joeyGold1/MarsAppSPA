@@ -5,6 +5,7 @@ import { RoverDropDownFC } from "./FCs/RoverDropDownFC";
 import { SolInputFC } from "./FCs/SolInputFC";
 import { CameraI, RoverFullI } from "./nasaInterfaces";
 import { selectedRoverContext } from "./selectedRoverContext";
+import { PhotoCollection } from "./FCs/PhotoCollectionFC";
 
 function App() {
   const [selectedRover, setSelectedRover] = useState<RoverFullI | undefined>();
@@ -28,6 +29,8 @@ function App() {
           <RoverDropDownFC />
           <CameraDropDownFC />
           <SolInputFC />
+
+          <PhotoCollection photos={[]}/>
         </header>
       </div>
     </selectedRoverContext.Provider>
