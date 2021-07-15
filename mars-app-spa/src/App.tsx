@@ -9,6 +9,7 @@ function App() {
   const [selectedRover, setSelectedRover] = useState<RoverFullI | undefined>();
   const [selectedCamera, setSelectedCamera] = useState<CameraI | undefined>();
   const [sol, setSol] = useState<number | undefined>();
+  const thing = false;
 
   const [photos, setPhotos] = useState<PhotoI[]>([]);
 
@@ -27,7 +28,8 @@ function App() {
         <header className="App-header">
           <h1>Mars Rover Photo App</h1>
           <DataEntryFC />
-          <SendRequestButtonFC setPhotos={setPhotos} />
+          {selectedRover && selectedCamera && (!sol) && <SendRequestButtonFC setPhotos={setPhotos} />}
+          
           <PhotoCollection photos={photos} />
         </header>
       </div>
