@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
+import styled from "styled-components";
 import getFromApi from "../getFromApi";
 import { PhotoI } from "../nasaInterfaces";
 import { selectedRoverContext } from "../selectedRoverContext";
 
-// type SendRequestButtonProps = {
-//     setPhotos: (PhotoI[]) => void;
-// }
+const Button = styled.button`
+  font: inherit;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid slategrey;
+  border-radius: 3px;
+`;
 
 export const SendRequestButtonFC: React.FC<{
   setPhotos: (photos: PhotoI[]) => void;
@@ -16,7 +21,7 @@ export const SendRequestButtonFC: React.FC<{
   const sol = programContext.sol;
 
   return (
-    <button
+    <Button
       onClick={async () => {
         setPhotos(
           await getFromApi(
@@ -26,6 +31,6 @@ export const SendRequestButtonFC: React.FC<{
       }}
     >
       Show Photos
-    </button>
+    </Button>
   );
 };
