@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { numPerPage } from '../constants'
 import { PhotoI } from '../nasaInterfaces'
 import { PhotoFC } from './PhotoFC'
+import "../Styles/PhotoCollectionFC.css";
 
 
 export const PhotoCollection:React.FC<{photos:PhotoI[]}> = ({photos})=>{
@@ -31,7 +32,7 @@ export const PhotoCollection:React.FC<{photos:PhotoI[]}> = ({photos})=>{
     return (
         <>
                 {leftButton}{rightButton}
-            <div>
+            <div className="flexDiv">
 
 
                 {photoList}
@@ -39,4 +40,3 @@ export const PhotoCollection:React.FC<{photos:PhotoI[]}> = ({photos})=>{
         </>
     )
 } 
-
