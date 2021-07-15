@@ -1,30 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { CameraDropDownFC } from "./FCs/CameraDropDownFC";
-import { DropDownFC } from "./FCs/dropDownFC";
 import { RoverDropDownFC } from "./FCs/RoverDropDownFC";
-import getFromApi from "./getFromApi";
+import { SolInputFC } from "./FCs/SolInputFC";
 import { CameraI, RoverFullI } from "./nasaInterfaces";
 import { selectedRoverContext } from "./selectedRoverContext";
 
 function App() {
-  
   const [selectedRover, setSelectedRover] = useState<RoverFullI | undefined>();
   const [selectedCamera, setSelectedCamera] = useState<CameraI | undefined>();
+  const [sol, setSol] = useState<number | undefined>();
 
   return (
     <selectedRoverContext.Provider
       value={{
-        rover:selectedRover,
-        camera:selectedCamera,
+        rover: selectedRover,
+        camera: selectedCamera,
+        sol: sol,
         setRover: setSelectedRover,
         setCamera: setSelectedCamera,
+        setSol: setSol,
       }}
     >
       <div className="App">
         <header className="App-header">
-          <RoverDropDownFC/>
-          <CameraDropDownFC/>
+          <RoverDropDownFC />
+          <CameraDropDownFC />
+          <SolInputFC />
         </header>
       </div>
     </selectedRoverContext.Provider>
