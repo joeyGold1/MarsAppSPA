@@ -24,6 +24,7 @@ function App() {
     >
       <div className="App">
         <header className="App-header">
+          <h1>Mars Rover Photo App</h1>
           <RoverDropDownFC />
           <CameraDropDownFC />
           <SolInputFC />
