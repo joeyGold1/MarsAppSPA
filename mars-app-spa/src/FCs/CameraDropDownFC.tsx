@@ -8,7 +8,7 @@ export const CameraDropDownFC : React.FC =
     const programContext = useContext(selectedRoverContext);
     const [cameras, setCameras] = useState<CameraI[]>([]);
     useEffect(() => {
-        setCameras(programContext.rover ? programContext.rover.cameras : []);
+        setCameras(programContext.rover?.cameras || []);
       }, [programContext.rover]);
 
     const cameraDropDownOptions = cameras.map((camera, index) => {
