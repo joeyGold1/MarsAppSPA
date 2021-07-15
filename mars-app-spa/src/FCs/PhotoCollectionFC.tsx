@@ -4,9 +4,12 @@ import { PhotoI } from '../nasaInterfaces'
 import { PhotoFC } from './PhotoFC'
 import "../Styles/PhotoCollectionFC.css";
 
-
 export const PhotoCollection:React.FC<{photos:PhotoI[]}> = ({photos})=>{
     const [pagination,setPagination] = useState({start:0,end:numPerPage})
+    
+  if (photos.length === 0) {
+    return <p>No photos</p>;
+  }
     const photoList = photos.map((photo: PhotoI)=>{return (<PhotoFC photo={photo}/>)}).slice(pagination.start,pagination.end);
     const leftButton = (<button><img src="./Images/NASAlogo.png" alt="<" 
         onClick={()=>{
