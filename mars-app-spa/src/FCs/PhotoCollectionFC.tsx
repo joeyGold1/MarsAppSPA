@@ -3,6 +3,15 @@ import { numPerPage } from "../constants";
 import { PhotoI } from "../nasaInterfaces";
 import { PhotoFC } from "./PhotoFC";
 import "../Styles/PhotoCollectionFC.css";
+import styled from "styled-components";
+
+const ArrowButton = styled.button`
+    font: inherit;
+    margin: 1em;
+    padding: 0.25em 1em;
+    border: 2px solid slategrey;
+    border-radius: 3px;
+`;
 
 export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
     const [pagination, setPagination] = useState({ start: 0, end: numPerPage });
@@ -30,16 +39,8 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
         setPagination({ start: newStart, end: newEnd });
     };
 
-    const leftButton = (
-        <button>
-            <img src="./Images/NASAlogo.png" alt="<" onClick={moveLeft} />
-        </button>
-    );
-    const rightButton = (
-        <button>
-            <img src="./Images/NASAlogo.png" alt=">" onClick={moveRight} />
-        </button>
-    );
+    const leftButton = <ArrowButton onClick={moveLeft}>&lt;</ArrowButton>;
+    const rightButton = <ArrowButton onClick={moveRight}>&gt;</ArrowButton>;
     console.log("Pagination start: " + pagination.start);
     console.log("Pagination end: " + pagination.end);
     return (
