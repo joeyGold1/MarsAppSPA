@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./Styles/App.css";
 import { CameraDropDownFC } from "./FCs/CameraDropDownFC";
 import { RoverDropDownFC } from "./FCs/RoverDropDownFC";
 import { SolInputFC } from "./FCs/SolInputFC";

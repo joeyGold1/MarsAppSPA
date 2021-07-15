@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { selectedRoverContext } from "../selectedRoverContext";
-
+import "../Styles/SolInput.css"
 export const SolInputFC: React.FC = () => {
   const [inputStr, setInputStr] = useState("");
   const programContext = useContext(selectedRoverContext);
@@ -11,15 +11,12 @@ export const SolInputFC: React.FC = () => {
   return (
     <>
       <p>Martian days since landing:</p>
-      <input
+      <input className = "solInputBox"
         type="text"
         value={inputStr}
         onChange={(e) => {
           const regexp = /^(0*(0|[1-9][0-9]*))?$/;
           let newStr = e.target.value;
-          //   while (newStr[0] == "0" && newStr.length > 1) {
-          //     newStr = newStr.slice(1);
-          //   }
           if (regexp.test(newStr)) {
             let value = Number(newStr);
             if (value > maxSol) {
