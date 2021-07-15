@@ -2,10 +2,15 @@ import React from "react";
 import Select from "react-select";
 import "../Styles/dropDownFC.css";
 
-export const DropDownFC: React.FC<{
-  options: { value: any; label: string }[];
+type DropDownProps = {
+  options: {
+    value: any;
+    label: string;
+  }[];
   onSelect: (x: any) => void;
-}> = ({ options, onSelect }) => {
+};
+
+export const DropDownFC: React.FC<DropDownProps> = ({ options, onSelect }) => {
   return (
     <Select className="dropDownSelect"
       options={options}
