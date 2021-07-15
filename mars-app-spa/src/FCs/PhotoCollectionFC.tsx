@@ -27,14 +27,10 @@ export const PhotoCollection:React.FC<{photos:PhotoI[]}> = ({photos})=>{
         );
     }
     } /></button>);
-    console.log("Pagination start: " + pagination.start);
-    console.log("Pagination end: "+ pagination.end);
     return (
         <>
                 {leftButton}{rightButton}
             <div className="flexDiv">
-
-
                 {photoList}
             </div>
         </>
