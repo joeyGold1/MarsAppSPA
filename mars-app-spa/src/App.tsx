@@ -28,7 +28,7 @@ function App() {
         <header className="App-header">
           <h1>Mars Rover Photo App</h1>
           <DataEntryFC />
-          {selectedRover && selectedCamera && (!sol) && <SendRequestButtonFC setPhotos={setPhotos} />}
+          {selectedRover && selectedCamera && (!!sol) && <SendRequestButtonFC setPhotos={setPhotos} />}
           
           <PhotoCollection photos={photos} />
         </header>
