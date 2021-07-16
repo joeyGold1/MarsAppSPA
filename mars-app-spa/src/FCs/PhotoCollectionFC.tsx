@@ -10,6 +10,10 @@ import { PageNumberDownFC } from "./PageNumberDropDownFC";
 export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
     const [pagination, setPagination] = useState({ start: 0, end: numPerPage });
     const [page,setPage]              = useState(0)
+    const [photoList,setPhotoList]    = useState<JSX.Element[]>(
+        photos.map((photo: PhotoI,index:number) => {
+            return <PhotoFC photos={photos} index={index}/>;
+        }).             slice(pagination.start, pagination.end));
     const maxPage = Math.floor((photos.length-1)/numPerPage)
 
     if (photos.length === 0) {
@@ -24,6 +28,9 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
 
         setPage(newPage);
         setPagination(newPagination);
+        setPhotoList(photos.map((photo: PhotoI,index:number) => {
+            return <PhotoFC photos={photos} index={index}/>;
+            }).slice(pagination.start, pagination.end));
     };
 
     const moveRight = () => {
@@ -33,6 +40,9 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
         const newPagination = {start:numPerPage*newPage,end: Math.min(numPerPage*(newPage+1),photos.length)};
         setPage(newPage);
         setPagination(newPagination);
+        setPhotoList(photos.map((photo: PhotoI,index:number) => {
+            return <PhotoFC photos={photos} index={index}/>;
+            }).slice(pagination.start, pagination.end));
     };
     if (page>maxPage) {
         setPage(maxPage+1);
@@ -40,12 +50,7 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
     } 
     const rightButton = <ArrowButton onClick={moveRight}>&gt;</ArrowButton>;
     const leftButton = <ArrowButton onClick={moveLeft}>&lt;</ArrowButton>;
-    const photoList = photos
-        .map((photo: PhotoI,index:number) => {
-            return <PhotoFC photos={photos} index={index}/>;
-        }).slice(pagination.start, pagination.end);
-
-
+    
     return (
         <>
             <div className="flexDiv">{photoList}</div>

@@ -10,6 +10,7 @@ export const PhotoFC: React.FC<{ photos: PhotoI[],index:number }> = ({ photos,in
   return (
     <>
     <img className="marsPhoto" src= {photos[index].img_src} onClick={()=>{setState(true);}} />
+    
       {isOpen && (
           <Lightbox
             mainSrc= {photos[currentIndex].img_src}
