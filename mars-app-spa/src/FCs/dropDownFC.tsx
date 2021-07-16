@@ -1,9 +1,22 @@
-import React, { useContext, useEffect, useState, Component  } from 'react';
-import Select from 'react-select'
+import React from "react";
+import Select from "react-select";
+import "./dropDownFC.css";
 
-export const DropDownFC:React.FC <{options:{value:string,label:string}[]}> = ({options}) => {
-    return (
-        <Select options={options}
-                onChange = {(x) => console.log(x)}/>
-    )
-}
+type DropDownProps = {
+  options: {
+    value: any;
+    label: string;
+  }[];
+  onSelect: (x: any) => void;
+};
+
+export const DropDownFC: React.FC<DropDownProps> = ({ options, onSelect }) => {
+  return (
+    <Select className="dropDownSelect"
+      options={options}
+      onChange={(selectedOption) =>
+        onSelect(selectedOption ? selectedOption.value : "")
+      }
+    />
+  );
+};

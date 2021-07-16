@@ -1,30 +1,33 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Select from 'react-select';
-import './App.css';
-import { DropDownFC } from './FCs/dropDownFC';
-import getFromApi from './getFromApi';
-import { RoverI } from './nasaInterfaces';
-
-const func = async () => {
-  return ;
-}
+import React, { useContext, useEffect, useState } from "react";
+import "./App.css";
+import { CameraDropDownFC } from "./FCs/CameraDropDownFC";
+import { DropDownFC } from "./FCs/dropDownFC";
+import { RoverDropDownFC } from "./FCs/RoverDropDownFC";
+import getFromApi from "./getFromApi";
+import { CameraI, RoverFullI } from "./nasaInterfaces";
+import { selectedRoverContext } from "./selectedRoverContext";
 
 function App() {
-  const [rovers, setRovers] = useState<RoverI[]>([]);
+  
+  const [selectedRover, setSelectedRover] = useState<RoverFullI | undefined>();
+  const [selectedCamera, setSelectedCamera] = useState<CameraI | undefined>();
 
-  useEffect(() => { (async () => {
-      console.log("oiahwe");
-        setRovers((await getFromApi<RoverI[]>('http://localhost:8000/rovers/')));
-    })()}, []
-  );
-  const dropDownOptions = rovers.map((rover)=>{return {value:rover.name,label:rover.name}});
   return (
+    <selectedRoverContext.Provider
+      value={{
+        rover:selectedRover,
+        camera:selectedCamera,
+        setRover: setSelectedRover,
+        setCamera: setSelectedCamera,
+      }}
+    >
       <div className="App">
         <header className="App-header">
-        <p>Rover Drop Down:</p>
-        <DropDownFC options={dropDownOptions}/>
+          <RoverDropDownFC/>
+          <CameraDropDownFC/>
         </header>
       </div>
+    </selectedRoverContext.Provider>
   );
 }
 
