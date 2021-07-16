@@ -1,5 +1,22 @@
+
 .flexDiv {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+  margin:3%;
+  width: 100%
+}
+.buttonsAndPageNums {
+  display: grid;
+}
+
+.leftButton {
+  grid-column-start: 1;
+}
+
+.pageNumText {
+  grid-column-start: 2;
+}
+.rightButton {
+  grid-column-start: 3;
 }
