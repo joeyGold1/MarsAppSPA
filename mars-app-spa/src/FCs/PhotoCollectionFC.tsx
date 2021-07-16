@@ -42,7 +42,7 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
         setPagination(newPagination);
         setPhotoList(photos.map((photo: PhotoI,index:number) => {
             return <PhotoFC photos={photos} index={index}/>;
-            }).slice(pagination.start, pagination.end));
+            }).slice(newPagination.start, newPagination.end));
     };
     if (page>maxPage) {
         setPage(maxPage+1);
