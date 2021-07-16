@@ -20,7 +20,7 @@ export const RoverDropDownFC : React.FC =
           }, []);
         return (
             <>
-                <p>Rover Drop Down:</p>
+                <p>Select Mars Rover:</p>
                 <DropDownFC
                     options={roverDropDownOptions}
                     onSelect={(index) => programContext.setRover(rovers[index])}

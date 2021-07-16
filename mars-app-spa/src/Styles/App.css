@@ -14,8 +14,12 @@
 }
 
 .App-header {
-  background-color: #E27B58;
-  background-image: url("https://dynaimage.cdn.cnn.com/cnn/w_1600/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F210211180920-07-mars-unf.jpg");
+  background-color: rgb(148,113,85);
+  background-image: url("http://localhost:3000/background.jpeg");
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  /*box-shadow: inset 0px 0px 0px rgb(148,113,85) 0px  ;*/
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@ import React from "react";
 import Select from "react-select";
 import "../Styles/dropDownFC.css";
 
-type DropDownProps = {
+export type DropDownProps = {
   options: {
     value: any;
     label: string;

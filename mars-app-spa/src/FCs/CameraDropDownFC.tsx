@@ -17,7 +17,7 @@ export const CameraDropDownFC : React.FC =
 
     return (
         <>
-            <p>Camera Drop Down:</p>
+            <p>Select Camera:</p>
             <DropDownFC
                 options={cameraDropDownOptions}
                 onSelect={(index) => programContext.setCamera(cameras[index])}

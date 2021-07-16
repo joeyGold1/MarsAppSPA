@@ -5,11 +5,12 @@ import { PhotoFC } from "./PhotoFC";
 import "../Styles/PhotoCollectionFC.css";
 import { ArrowButton } from "./ArrowButton";
 import { moveLeftRight } from "./MoveRightLeft";
+import { PageNumberDownFC } from "./PageNumberDropDownFC";
 
 export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
     const [pagination, setPagination] = useState({ start: 0, end: numPerPage });
     const [page,setPage]              = useState(0)
-    const maxPage = Math.floor(photos.length/numPerPage)
+    const maxPage = Math.floor((photos.length-1)/numPerPage)
 
     if (photos.length === 0) {
         return <p>No photos available</p>;
@@ -20,6 +21,7 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
         console.log("Left button")
         const newPage = Math.max(page-1,0);
         const newPagination = {start:numPerPage*newPage,end: Math.min(numPerPage*(newPage+1),photos.length)};
+
         setPage(newPage);
         setPagination(newPagination);
     };
@@ -28,7 +30,7 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
         console.log("Right button")
 
         const newPage = Math.min(page+1,maxPage);
-        const newPagination = {start:numPerPage*page,end: Math.min(numPerPage*(page+1),photos.length)};
+        const newPagination = {start:numPerPage*newPage,end: Math.min(numPerPage*(newPage+1),photos.length)};
         setPage(newPage);
         setPagination(newPagination);
     };
