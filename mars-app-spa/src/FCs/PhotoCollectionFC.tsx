@@ -41,10 +41,10 @@ export const PhotoCollection: React.FC<{ photos: PhotoI[] }> = ({ photos }) => {
     const rightButton = <ArrowButton onClick={moveRight}>&gt;</ArrowButton>;
     const leftButton = <ArrowButton onClick={moveLeft}>&lt;</ArrowButton>;
     const photoList = photos
-        .map((photo: PhotoI) => {
-            return <PhotoFC photo={photo} />;
-        })
-        .slice(pagination.start, pagination.end);
+        .map((photo: PhotoI,index:number) => {
+            return <PhotoFC photos={photos} index={index}/>;
+        }).slice(pagination.start, pagination.end);
+
 
     return (
         <>
